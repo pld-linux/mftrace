@@ -1,12 +1,12 @@
 Summary:	Generate scalable fonts for TeX
 Summary(pl):	Generowanie skalowanych fontów dla TeXa
 Name:		mftrace
-Version:	1.0.36
+Version:	1.1.1
 Release:	1
 License:	GPL
 Group:		Applications/Publishing
 Source0:	http://www.xs4all.nl/~hanwen/mftrace/%{name}-%{version}.tar.gz
-# Source0-md5:	3c2c10a5c606505871f488166a6d11f3
+# Source0-md5:	d720f844e2a5fbecaff274b81bff79d3
 URL:		http://www.cs.uu.nl/~hanwen/mftrace/
 Requires:	potrace
 Requires:	python >= 2.1
@@ -26,7 +26,7 @@ PostScript files to render correctly on printers with many
 resolutions. Moreover, Ghostscript can generate much better PDF, if
 given scalable fonts.
 
-Note: pfaedit >= 020215 is recommended for autohinting.
+Note: fontforge (or pfaedit >= 020215) is recommended for autohinting.
 
 %description -l pl
 mftrace to ma³y program w Pythonie pozwalaj±cy na trasowanie TeXowych
@@ -38,7 +38,8 @@ pozwalaj± na poprawne odwzorowanie plików w PostScripcie na drukarkach
 w wielu rozdzielczo¶ciach. Co wiêcej, ghostscript mo¿e generowaæ du¿o
 lepsze PDF-y, je¶li ma skalowalne fonty.
 
-Zalecany jest pakiet pfaedit >= 020215 do automatycznego hintingu.
+Zalecany jest pakiet fontforge (lub pfaedit >= 020215) do
+automatycznego hintingu.
 
 %prep
 %setup -q
