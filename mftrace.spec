@@ -1,12 +1,12 @@
 Summary:	Generate scalable fonts for TeX
 Summary(pl):	Generowanie skalowanych fontów dla TeXa
 Name:		mftrace
-Version:	1.0.29
+Version:	1.0.31
 Release:	1
 License:	GPL
 Group:		Applications/Publishing
 Source0:	http://www.cs.uu.nl/~hanwen/mftrace/%{name}-%{version}.tar.gz
-# Source0-md5:	a8dd973bcd3a1555c740c1706d97061c
+# Source0-md5:	039c9ab2a360fc1179ec8422468c2f8e
 URL:		http://www.cs.uu.nl/~hanwen/mftrace/
 Requires:	autotrace >= 0.30
 Requires:	python >= 2.1
