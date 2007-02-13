@@ -1,5 +1,5 @@
 Summary:	Generate scalable fonts for TeX
-Summary(pl.UTF-8):   Generowanie skalowanych fontów dla TeXa
+Summary(pl.UTF-8):	Generowanie skalowanych fontów dla TeXa
 Name:		mftrace
 Version:	1.2.5
 Release:	1
