@@ -1,13 +1,13 @@
 Summary:	Generate scalable fonts for TeX
 Summary(pl.UTF-8):	Generowanie skalowanych fontów dla TeXa
 Name:		mftrace
-Version:	1.2.5
+Version:	1.2.13
 Release:	1
 License:	GPL
 Group:		Applications/Publishing
-Source0:	http://www.xs4all.nl/~hanwen/mftrace/%{name}-%{version}.tar.gz
-# Source0-md5:	c74c812e4e7f63f63376a13b792249da
-URL:		http://www.xs4all.nl/~hanwen/mftrace/
+Source0:	https://lilypond.org/download/sources/mftrace/%{name}-%{version}.tar.gz
+# Source0-md5:	0d3f2ae9cff1f2677fbf968eb40c9238
+URL:		http://lilypond.org/mftrace/
 Requires:	potrace
 Requires:	python >= 2.1
 Requires:	t1utils
@@ -47,6 +47,7 @@ automatycznego hintingu.
 %build
 %configure \
 	POTRACE=/usr/bin/potrace \
+	PYTHON=%{__python} \
 	AUTOTRACE=/usr/bin/autotrace
 
 %{__make} \
