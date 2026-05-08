@@ -3,14 +3,15 @@ Summary(pl.UTF-8):	Generowanie skalowanych fontów dla TeXa
 Name:		mftrace
 Version:	1.2.20
 Release:	1
-License:	GPL
+# gf2pbm is MIT, the rest GPL v2
+License:	GPL v2, MIT
 Group:		Applications/Publishing
 Source0:	https://lilypond.org/download/sources/mftrace/%{name}-%{version}.tar.gz
 # Source0-md5:	33056fadd1badce2ecffbeeab138f219
 Patch0:		%{name}-c23-fixes.patch
 URL:		http://lilypond.org/mftrace/
 Requires:	potrace
-Requires:	python3
+Requires:	python3 >= 1:3
 Requires:	t1utils
 Requires:	tetex-metafont
 Conflicts:	autotrace < 0.30
@@ -76,5 +77,4 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_datadir}/mftrace
 %{_datadir}/mftrace/afm.py
 %{_datadir}/mftrace/tfm.py
-%dir %{_datadir}/mftrace/__pycache__
-%{_datadir}/mftrace/__pycache__/*.pyc
+%{_datadir}/mftrace/__pycache__
