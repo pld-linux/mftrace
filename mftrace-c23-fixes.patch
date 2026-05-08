@@ -1,0 +1,68 @@
+--- a/gf2pbm.c	2026-05-08 20:34:16.040197971 +0200
++++ b/gf2pbm.c	2026-05-08 20:35:47.469836898 +0200
+@@ -30,8 +30,8 @@
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include <string.h>
++#include <stdbool.h>
+ #include <unistd.h>		/* getopt. */
+-#include <strings.h>
+ 
+ #include "config.h"
+ 
+@@ -106,7 +106,7 @@
+ #endif
+ #endif
+ 
+-typedef enum {false,true}bool;
++/* bool, true, false are keywords in C23; stdbool.h covers C99/C11/C17 */
+ bool debug;
+ 
+ struct font {
+@@ -252,7 +252,7 @@
+ 	glyphp = fontp->glyph = (struct glyph*)realloc(fontp->glyph,
+ 	    (unsigned int) (newsize + 1) * sizeof(struct glyph));
+ 	if (newsize > fontp->maxchar)
+-	    bzero((char *) (glyphp + fontp->maxchar + 1),
++	    memset((char *) (glyphp + fontp->maxchar + 1), 0,
+ 		(int) (newsize - fontp->maxchar) * sizeof(struct glyph));
+ 	maxchar = fontp->maxchar = newsize;
+ }
+@@ -366,7 +366,7 @@
+  */
+ 	bytes_wide = ROUNDUP((int) g->bitmap.w, BMBITS) * BMBYTES;
+ 	maxp = ADD(basep, g->bitmap.h * bytes_wide);
+-	bzero(g->bitmap.bits, g->bitmap.h * bytes_wide);
++	memset(g->bitmap.bits, 0, g->bitmap.h * bytes_wide);
+ 	new_row = false;
+ 	word_weight = BMBITS;
+ 	for (;;) {
+@@ -502,7 +502,7 @@
+  *	Prepare glyph array.
+  */
+ 	fontp->glyph = (struct glyph*)xmalloc(256 * sizeof(struct glyph));
+-	bzero((char *) fontp->glyph, 256 * sizeof(struct glyph));
++	memset((char *) fontp->glyph, 0, 256 * sizeof(struct glyph));
+ /*
+  *	Read glyph directory.
+  */
+@@ -641,7 +641,7 @@
+     }
+ 
+   fontp = (struct font*)malloc (sizeof (struct font));
+-  bzero (fontp, sizeof (struct font));
++  memset (fontp, 0, sizeof (struct font));
+ 
+   fontp->fontname = filename;
+   fontp->file = in_file;
+--- a/GNUmakefile.in	2026-05-08 20:36:36.151740650 +0200
++++ b/GNUmakefile.in	2026-05-08 20:36:42.946503560 +0200
+@@ -14,7 +14,7 @@
+ srcdir=@srcdir@
+ VPATH=$(srcdir)
+ NAME=mftrace
+-MANPAGES=mftrace.1 gf2pbm.1
++MANPAGES=mftrace.1
+ VERSION=@VERSION@
+ distdir=$(NAME)-$(VERSION)
+ prefix=@prefix@

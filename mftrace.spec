@@ -1,15 +1,16 @@
 Summary:	Generate scalable fonts for TeX
 Summary(pl.UTF-8):	Generowanie skalowanych fontów dla TeXa
 Name:		mftrace
-Version:	1.2.13
+Version:	1.2.20
 Release:	1
 License:	GPL
 Group:		Applications/Publishing
 Source0:	https://lilypond.org/download/sources/mftrace/%{name}-%{version}.tar.gz
-# Source0-md5:	0d3f2ae9cff1f2677fbf968eb40c9238
+# Source0-md5:	33056fadd1badce2ecffbeeab138f219
+Patch0:		%{name}-c23-fixes.patch
 URL:		http://lilypond.org/mftrace/
 Requires:	potrace
-Requires:	python >= 2.1
+Requires:	python3
 Requires:	t1utils
 Requires:	tetex-metafont
 Conflicts:	autotrace < 0.30
@@ -43,11 +44,12 @@ automatycznego hintingu.
 
 %prep
 %setup -q
+%patch -P 0 -p1
 
 %build
 %configure \
 	POTRACE=/usr/bin/potrace \
-	PYTHON=%{__python} \
+	PYTHON=%{__python3} \
 	AUTOTRACE=/usr/bin/autotrace
 
 %{__make} \
@@ -72,7 +74,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/mftrace
 %{_mandir}/man1/mftrace.1*
 %dir %{_datadir}/mftrace
-%{_datadir}/mftrace/afm.pyc
 %{_datadir}/mftrace/afm.py
-%{_datadir}/mftrace/tfm.pyc
 %{_datadir}/mftrace/tfm.py
+%dir %{_datadir}/mftrace/__pycache__
+%{_datadir}/mftrace/__pycache__/*.pyc
